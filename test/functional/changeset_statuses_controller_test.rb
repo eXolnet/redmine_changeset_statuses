@@ -97,4 +97,34 @@ class ChangesetStatusesControllerTest < ActionController::TestCase
 
     assert_response 404
   end
+
+  def test_show_combined_changeset_statuses_on_default_repository
+    get :show_combined, :project_id => 'ecookbook', :rev => '1', :format => 'json'
+
+    assert_response :success
+  end
+
+  def test_show_combined_changeset_statuses_on_non_api_requests
+    get :show_combined, :project_id => 'invalid', :rev => '1'
+
+    assert_response 403
+  end
+
+  def test_show_combined_changeset_statuses_on_invalid_project
+    get :show_combined, :project_id => 'invalid', :rev => '1', :format => 'json'
+
+    assert_response 404
+  end
+
+  def test_show_combined_changeset_statuses_on_invalid_repository
+    get :show_combined, :project_id => 'ecookbook', :repository_id => 'invalid', :rev => '1', :format => 'json'
+
+    assert_response 404
+  end
+
+  def test_show_combined_changeset_statuses_on_invalid_rev
+    get :show_combined, :project_id => 'ecookbook', :rev => 'invalid', :format => 'json'
+
+    assert_response 404
+  end
 end

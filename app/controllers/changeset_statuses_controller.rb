@@ -7,6 +7,7 @@ class ChangesetStatusesController < ApplicationController
   def create
     @status = ChangesetStatus.new(
       :changeset   => @changeset,
+      :author      => User.current,
       :state       => params[:state],
       :target_url  => params[:target_url],
       :description => params[:description],
@@ -23,12 +24,25 @@ class ChangesetStatusesController < ApplicationController
 
   def show
     @offset, @limit = api_offset_and_limit
-    @query = ChangesetStatus.where(:changeset_id => @changeset.id)
+    @query = ChangesetStatus.changeset(@changeset)
 
     @status_count = @query.count
-    @statuses = @query.limit(@limit).offset(@offset).to_a
+    @statuses = @query.order(:created_on => :desc).limit(@limit).offset(@offset).to_a
 
     render :template => 'changeset_statuses/show.api', :layout => nil
+  end
+
+  def show_combined
+    @offset, @limit = api_offset_and_limit
+    @query = ChangesetStatus.changeset(@changeset).combined
+
+    states_count = @query.group(:state).count
+    @state = ChangesetStatus::STATES.find {|s| states_count.key?(s) }
+
+    @status_count = @query.count
+    @statuses = @query.order(:created_on => :desc).limit(@limit).offset(@offset).to_a
+
+    render :template => 'changeset_statuses/show_combined.api', :layout => nil
   end
 
   private
