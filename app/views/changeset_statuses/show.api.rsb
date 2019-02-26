@@ -1,0 +1,13 @@
+api.array :statuses, api_meta(:total_count => @status_count, :offset => @offset, :limit => @limit) do
+  @statuses.each do |status|
+    api.status do
+      api.id status.id
+
+      api.state       status.state
+      api.target_url  status.target_url
+      api.description status.description
+      api.context     status.context
+      api.created_on  status.created_on
+    end
+  end
+end
