@@ -1,0 +1,24 @@
+.changeset-status:before {
+  content: '';
+  display: inline-block;
+  background-color: #c0c0c0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 3px;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+
+.changeset-status--pending:before {
+  background-color: #E59F48;
+}
+
+.changeset-status--success:before {
+  background-color: #00B78A;
+}
+
+.changeset-status--error:before,
+.changeset-status--failure:before {
+  background-color: #B0060A;
+}
