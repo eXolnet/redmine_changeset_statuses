@@ -2,6 +2,8 @@ class ChangesetStatusesController < ApplicationController
   accept_api_auth :create, :show
 
   before_action :require_request_with_format
+  before_action :find_project
+  before_action :find_repository
   before_action :find_changeset
 
   def create
@@ -63,9 +65,13 @@ class ChangesetStatusesController < ApplicationController
     deny_access unless %w(xml json).include? params[:format]
   end
 
-  def find_changeset
+  def find_project
     @project = Project.visible.find_by_param(params[:project_id])
+  rescue ActiveRecord::RecordNotFound
+    render_404
+  end
 
+  def find_repository
     if params[:repository_id].present?
       @repository = @project.repositories.find_by_identifier_param(params[:repository_id])
     else
@@ -73,10 +79,10 @@ class ChangesetStatusesController < ApplicationController
     end
 
     (render_404; return false) unless @repository
+  end
 
+  def find_changeset
     @changeset = @repository.find_changeset_by_name(params[:rev])
     (render_404; return false) unless @changeset
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 end
