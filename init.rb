@@ -5,7 +5,7 @@ CHANGESET_STATUSES_VERSION_NUMBER = '0.0.1'
 Redmine::Plugin.register :redmine_changeset_statuses do
   name 'Changeset Statuses'
   author 'eXolnet'
-  description 'Allows external services to mark commits with an error, failure, pending, or success state.'
+  description 'Allows external services to set a state on revisions to consult it directly in Redmine.'
   version CHANGESET_STATUSES_VERSION_NUMBER
   url 'https://github.com/eXolnet/redmine_changeset_statuses'
   author_url 'https://www.exolnet.com'
