@@ -17,7 +17,7 @@ class ChangesetStatusesControllerTest < ActionController::TestCase
 
   def test_create_changeset_statuses_on_default_repository_with_minimal_parameters
     assert_difference 'ChangesetStatus.count' do
-      post :create, :project_id => 'ecookbook', :rev => '1', :format => 'json', :state => "success"
+      post :create, :project_id => 'ecookbook', :rev => '1', :format => 'json', :context => "continuous-integration/jenkins", :state => "success"
 
       assert_response :success
     end

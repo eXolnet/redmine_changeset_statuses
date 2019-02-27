@@ -6,7 +6,7 @@ class ChangesetStatus < ActiveRecord::Base
   belongs_to :changeset
   belongs_to :author, :class_name => 'User'
 
-  validates_presence_of :state, :changeset_id, :author_id
+  validates_presence_of :state, :changeset_id, :context, :author_id
   validates_inclusion_of :state, :in => STATES
   validates_length_of :target_url, :maximum => 255, :allow_nil => true
   validates_length_of :description, :maximum => 255, :allow_nil => true
@@ -21,7 +21,6 @@ class ChangesetStatus < ActiveRecord::Base
 
   scope :combined, lambda {
     where("NOT EXISTS (SELECT 1 FROM #{table_name} csc WHERE csc.changeset_id = #{table_name}.changeset_id "+
-      "AND csc.context IS NOT NULL "+
       "AND csc.context = #{table_name}.context "+
       "AND csc.created_on > #{table_name}.created_on)")
   }
