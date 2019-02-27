@@ -4,7 +4,11 @@ window.addEventListener('load', function() {
   for (i = 0; i < revisionLinks.length; ++i) {
     var revisionLink = revisionLinks[i];
 
-    fetch(revisionLink.href +'/status.json')
+    fetch(revisionLink.href +'/status.json', {
+      headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
       .then(function(response) {
         return response.json();
       })

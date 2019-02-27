@@ -1,7 +1,7 @@
 class ChangesetStatusesController < ApplicationController
   accept_api_auth :create, :show
 
-  before_action :require_api_request
+  before_action :require_request_with_format
   before_action :find_changeset
 
   def create
@@ -51,11 +51,16 @@ class ChangesetStatusesController < ApplicationController
     render :template => 'changeset_statuses/show_combined.api', :layout => nil
   end
 
+  def api_request?
+    return false if request.xhr?
+
+    super
+  end
+
   private
 
-  def require_api_request
-    return true if api_request?
-    deny_access
+  def require_request_with_format
+    deny_access unless %w(xml json).include? params[:format]
   end
 
   def find_changeset
