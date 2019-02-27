@@ -12,10 +12,10 @@ class ChangesetStatusesController < ApplicationController
     @status = ChangesetStatus.new(
       :changeset   => @changeset,
       :author      => User.current,
+      :context     => params[:context],
       :state       => params[:state],
       :target_url  => params[:target_url],
-      :description => params[:description],
-      :context     => params[:state]
+      :description => params[:description]
     )
 
     unless @status.save
