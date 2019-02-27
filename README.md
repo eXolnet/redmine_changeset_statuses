@@ -18,7 +18,7 @@ This plugin version is compatible only with Redmine 3.4 and later.
 2. Make a backup of your database, then run the following command to update it:
 
     ```bash
-    bundle exec rake redmine:plugins:migrate RAILS_ENV=production NAME=redmine_changeset_statuses
+    bundle exec rake redmine:plugins:migrate NAME=redmine_changeset_statuses RAILS_ENV=production
     ```
 
 3. Restart Redmine.
@@ -28,7 +28,7 @@ This plugin version is compatible only with Redmine 3.4 and later.
 1. Make a backup of your database, then rollback the migrations:
 
     ```bash
-    bundle exec rake redmine:plugins:migrate RAILS_ENV=production NAME=redmine_changeset_statuses VERSION=0
+    bundle exec rake redmine:plugins:migrate NAME=redmine_changeset_statuses VERSION=0 RAILS_ENV=production
     ```
 
 2. Remove the plugin's folder from `#{REDMINE_ROOT}/plugins`.
