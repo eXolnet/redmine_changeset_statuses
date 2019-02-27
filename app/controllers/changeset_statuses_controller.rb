@@ -5,6 +5,8 @@ class ChangesetStatusesController < ApplicationController
   before_action :find_changeset
 
   def create
+    render_403 unless User.current.allowed_to?(:commit_access, @project)
+
     @status = ChangesetStatus.new(
       :changeset   => @changeset,
       :author      => User.current,
@@ -23,6 +25,8 @@ class ChangesetStatusesController < ApplicationController
   end
 
   def show
+    render_403 unless User.current.allowed_to?(:view_changesets, @project)
+
     @offset, @limit = api_offset_and_limit
     @query = ChangesetStatus.changeset(@changeset)
 
@@ -33,6 +37,8 @@ class ChangesetStatusesController < ApplicationController
   end
 
   def show_combined
+    render_403 unless User.current.allowed_to?(:view_changesets, @project)
+
     @offset, @limit = api_offset_and_limit
     @query = ChangesetStatus.changeset(@changeset).combined
 
