@@ -1,24 +1,99 @@
-.changeset-status:before {
-  content: '';
+details.changeset-status__popover {
   display: inline-block;
-  background-color: #c0c0c0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  margin-right: 3px;
-  vertical-align: middle;
-  margin-bottom: 2px;
+  margin-right: 4px;
+  position: relative;
 }
 
-.changeset-status--pending:before {
-  background-color: #E59F48;
+details.changeset-status__popover > summary {
+  cursor: pointer;
+  list-style: none;
+  outline: 0;
 }
 
-.changeset-status--success:before {
-  background-color: #00B78A;
+details.changeset-status__popover > summary:before {
+  display: none;
 }
 
-.changeset-status--error:before,
-.changeset-status--failure:before {
-  background-color: #B0060A;
+details.changeset-status__popover > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.changeset-status__popover[open] > summary:before {
+  background: transparent;
+  bottom: 0;
+  content: " ";
+  cursor: default;
+  display: block;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 80;
+}
+
+.changeset-status__popup {
+  background-color: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 3px;
+  left: 50%;
+  margin-top: 3px;
+  max-width: 300px;
+  padding: 6px;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+.changeset-status__popup:before {
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid #c0c0c0;
+  content: '';
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: -4px;
+  transform: translateX(-50%);
+}
+
+.changeset-status__popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.changeset-status__popup ul > li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.changeset-status__popup ul > li + li {
+  margin-top: 3px;
+}
+
+.changeset-status__popup em {
+  color: #959595;
+  font-style: italic;
+}
+
+.changeset-status__popup em:before {
+  content: ' — ';
+}
+
+.changeset-status {
+  color: #c0c0c0;
+}
+
+.changeset-status--pending {
+  color: #E59F48;
+}
+
+.changeset-status--success {
+  color: #00B78A;
+}
+
+.changeset-status--error,
+.changeset-status--failure {
+  color: #B0060A;
 }
