@@ -44,6 +44,7 @@ details.changeset-status__popover[open] > summary:before {
   transform: translateX(-50%);
   z-index: 100;
 }
+
 .changeset-status__popup:before {
   border-left: 3px solid transparent;
   border-right: 3px solid transparent;
@@ -96,4 +97,25 @@ details.changeset-status__popover[open] > summary:before {
 .changeset-status--error,
 .changeset-status--failure {
   color: #B0060A;
+}
+
+@media screen and (max-width: 899px) {
+  .changeset-status__popup {
+    left: 100%;
+    margin-left: 3px;
+    margin-top: 1px;
+    max-width: 85vw;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .changeset-status__popup:before {
+    border-bottom: 3px solid transparent;
+    border-left: 0;
+    border-right: 3px solid #c0c0c0;
+    border-top: 3px solid transparent;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
