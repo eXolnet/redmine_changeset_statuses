@@ -12,7 +12,7 @@ class ChangesetStatus < ActiveRecord::Base
   validates_length_of :description, :maximum => 255, :allow_nil => true
   validates_length_of :context, :maximum => 255, :allow_nil => true
 
-  attr_protected :id
+  attr_protected :id if ActiveRecord::VERSION::MAJOR <= 4
 
   scope :changeset, lambda {|changesets|
     ids = [changesets].flatten.compact.map {|c| c.is_a?(Changeset) ? c.id : c}
