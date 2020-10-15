@@ -3,7 +3,7 @@
 [![Latest Release](https://img.shields.io/github/release/eXolnet/redmine_changeset_statuses.svg?style=flat-square)](https://github.com/eXolnet/redmine_changeset_statuses/releases)
 [![Redmine Compatibility](https://img.shields.io/static/v1?label=redmine&message=3.4.x-4.1.x&color=blue&style=flat-square)](https://www.redmine.org/plugins/redmine_changeset_statuses)
 [![Software License](https://img.shields.io/badge/license-MIT-8469ad.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/eXolnet/redmine_changeset_statuses/master.svg?style=flat-square)](https://travis-ci.org/eXolnet/redmine_changeset_statuses)
+[![Build Status](https://img.shields.io/github/workflow/status/eXolnet/redmine_changeset_statuses/tests?label=tests&style=flat-square)](https://github.com/eXolnet/redmine_changeset_statuses/actions?query=workflow%3Atests)
 [![Maintainability](https://api.codeclimate.com/v1/badges/51ebd36bafadfa0a4946/maintainability)](https://codeclimate.com/github/eXolnet/redmine_changeset_statuses/maintainability)
 
 Allows external services to set a state on revisions to consult it directly in Redmine. This plugin is highly based on [Github's Commit Status API](https://developer.github.com/v3/repos/statuses/).
