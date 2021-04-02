@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.2.1
+
+* Fix changeset status display on Redmine 4.x
+
 ## v1.2.0
 
 * Add support for Redmine 4.1
