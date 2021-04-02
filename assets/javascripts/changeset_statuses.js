@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-  var revisionLinks = document.querySelectorAll('#issue-changesets a[href*="/revisions/"]:not([href$="diff"])');
+  var revisionLinks = document.querySelectorAll('*:is(#issue-changesets, #tab-content-changesets) a[href*="/revisions/"]:not([href$="diff"])');
 
   for (i = 0; i < revisionLinks.length; ++i) {
     (function(revisionLink) {
