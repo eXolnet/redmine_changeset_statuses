@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+function loadChangesetStatuses() {
   var revisionLinks = document.querySelectorAll('*:is(#issue-changesets, #tab-content-changesets) a[href*="/revisions/"]:not([href$="diff"])');
 
   for (i = 0; i < revisionLinks.length; ++i) {
@@ -61,5 +61,25 @@ window.addEventListener('load', function() {
           revisionLink.parentNode.insertBefore(details, revisionLink);
         });
     })(revisionLinks[i]);
+  }
+}
+
+window.addEventListener('load', function() {
+  loadChangesetStatuses();
+
+  // Redmine 4.x loads changets asynchronously, thus we have to detect when they are loaded
+  var tabChangesets = document.getElementById('tab-content-changesets');
+
+  if (tabChangesets) {
+    var observer = new MutationObserver(function() {
+      observer.disconnect();
+
+      setTimeout(loadChangesetStatuses, 200);
+    });
+
+    observer.observe(tabChangesets, {
+        childList: true,
+        subtree: true,
+    });
   }
 });
