@@ -67,7 +67,7 @@ function loadChangesetStatuses() {
 window.addEventListener('load', function() {
   loadChangesetStatuses();
 
-  // Redmine 4.x loads changets asynchronously, thus we have to detect when they are loaded
+  // Redmine 4.x loads changesets asynchronously, thus we have to detect when they are loaded
   var tabChangesets = document.getElementById('tab-content-changesets');
 
   if (tabChangesets) {
