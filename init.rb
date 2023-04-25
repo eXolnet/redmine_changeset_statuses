@@ -13,4 +13,4 @@ Redmine::Plugin.register :redmine_changeset_statuses do
   requires_redmine :version_or_higher => '3.4'
 end
 
-require 'redmine_changeset_statuses'
+require File.dirname(__FILE__) + '/lib/redmine_changeset_statuses'
