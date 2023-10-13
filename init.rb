@@ -1,6 +1,6 @@
 require 'redmine'
 
-CHANGESET_STATUSES_VERSION = '1.3.0'
+CHANGESET_STATUSES_VERSION = '1.3.1'
 
 Redmine::Plugin.register :redmine_changeset_statuses do
   name 'Changeset Statuses'
