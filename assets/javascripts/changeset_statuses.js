@@ -3,6 +3,13 @@ function loadChangesetStatuses() {
 
   for (i = 0; i < revisionLinks.length; ++i) {
     (function(revisionLink) {
+      var wrapper = revisionLink.parentNode;
+
+      // Avoid double loading
+      if (wrapper.querySelector('.changeset-status__popover')) {
+        return;
+      }
+
       fetch(revisionLink.href +'/status.json', {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
@@ -58,7 +65,7 @@ function loadChangesetStatuses() {
             ul.appendChild(li);
           });
 
-          revisionLink.parentNode.insertBefore(details, revisionLink);
+          wrapper.insertBefore(details, revisionLink);
         });
     })(revisionLinks[i]);
   }
