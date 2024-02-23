@@ -1,7 +1,7 @@
 # Redmine Changeset Statuses
 
 [![Latest Release](https://img.shields.io/github/release/eXolnet/redmine_changeset_statuses.svg?style=flat-square)](https://github.com/eXolnet/redmine_changeset_statuses/releases)
-[![Redmine Compatibility](https://img.shields.io/static/v1?label=redmine&message=4.2.x-5.0.x&color=blue&style=flat-square)](https://www.redmine.org/plugins/redmine_changeset_statuses)
+[![Redmine Compatibility](https://img.shields.io/static/v1?label=redmine&message=4.2.x-5.1.x&color=blue&style=flat-square)](https://www.redmine.org/plugins/redmine_changeset_statuses)
 [![Software License](https://img.shields.io/badge/license-MIT-8469ad.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/eXolnet/redmine_changeset_statuses/tests.yml?label=tests&style=flat-square)](https://github.com/eXolnet/redmine_changeset_statuses/actions?query=workflow%3Atests)
 [![Maintainability](https://api.codeclimate.com/v1/badges/51ebd36bafadfa0a4946/maintainability)](https://codeclimate.com/github/eXolnet/redmine_changeset_statuses/maintainability)
@@ -10,7 +10,7 @@ Allows external services to set a state on revisions to consult it directly in R
 
 ## Compatibility
 
-This plugin version is compatible only with Redmine 3.4 and later.
+This plugin version is compatible only with Redmine 4.2 and later.
 
 ## Installation
 
