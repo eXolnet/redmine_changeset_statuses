@@ -35,7 +35,7 @@ class ChangesetStatusesController < ApplicationController
     @status_count = @query.count
     @statuses = @query.order(:created_on => :desc).limit(@limit).offset(@offset).to_a
 
-    render :template => 'changeset_statuses/show.api', :layout => nil
+    render :template => 'changeset_statuses/show', :format => [:api], :layout => nil
   end
 
   def show_combined
@@ -50,7 +50,7 @@ class ChangesetStatusesController < ApplicationController
     @status_count = @query.count
     @statuses = @query.order(:created_on => :desc).limit(@limit).offset(@offset).to_a
 
-    render :template => 'changeset_statuses/show_combined.api', :layout => nil
+    render :template => 'changeset_statuses/show_combined', :format => [:api], :layout => nil
   end
 
   def api_request?
