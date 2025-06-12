@@ -10,7 +10,7 @@ Redmine::Plugin.register :redmine_changeset_statuses do
   url 'https://github.com/eXolnet/redmine_changeset_statuses'
   author_url 'https://www.exolnet.com'
 
-  requires_redmine :version_or_higher => '4.2'
+  requires_redmine :version_or_higher => '5.0'
 end
 
 require File.dirname(__FILE__) + '/lib/redmine_changeset_statuses'
