@@ -15,7 +15,15 @@ class ChangesetStatusesControllerTest < ActionController::TestCase
     @request.session[:user_id] = 1
   end
 
+  # API requests (json/xml) ignore the session, so authenticate with an API key
+  def authenticate_with_api_key(user = User.find(1))
+    Setting.rest_api_enabled = '1'
+    @request.headers['X-Redmine-API-Key'] = user.api_key
+  end
+
   def test_create_changeset_statuses_on_default_repository_with_minimal_parameters
+    authenticate_with_api_key
+
     assert_difference 'ChangesetStatus.count' do
       compatible_request :post, :create, :project_id => 'ecookbook', :rev => '1', :format => 'json', :context => "continuous-integration/jenkins", :state => "success"
 
@@ -27,6 +35,8 @@ class ChangesetStatusesControllerTest < ActionController::TestCase
   end
 
   def test_create_changeset_statuses_on_default_repository_with_all_parameters
+    authenticate_with_api_key
+
     assert_difference 'ChangesetStatus.count' do
       compatible_request :post, :create,
         :project_id => 'ecookbook',
@@ -42,6 +52,14 @@ class ChangesetStatusesControllerTest < ActionController::TestCase
 
     status = ChangesetStatus.last
     assert_kind_of ChangesetStatus, status
+  end
+
+  def test_create_changeset_statuses_without_commit_access
+    assert_no_difference 'ChangesetStatus.count' do
+      compatible_request :post, :create, :project_id => 'ecookbook', :rev => '1', :format => 'json', :context => "continuous-integration/jenkins", :state => "success"
+
+      assert_response 403
+    end
   end
 
   def test_create_changeset_statuses_on_default_repository_on_non_api_requests
