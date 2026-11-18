@@ -3,6 +3,9 @@ $VERBOSE = nil # for hide ruby warnings
 # Load the Redmine helper
 require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
 
+# Enable plugin fixtures
+ActiveRecord::FixtureSet.create_fixtures(File.dirname(__FILE__) + '/fixtures/', [:changeset_statuses])
+
 module RedmineChangesetStatuses
   module TestHelper
     def compatible_request(type, action, parameters = {})
