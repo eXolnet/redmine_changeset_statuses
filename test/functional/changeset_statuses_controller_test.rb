@@ -367,6 +367,17 @@ class ChangesetStatusesControllerTest < ActionController::TestCase
     assert_response 403
   end
 
+  def test_show_combined_changeset_statuses_on_private_project_with_api_key
+    changeset = Changeset.create!(:repository => Repository.find(11), :revision => '1', :committed_on => Time.now, :comments => 'Private')
+    ChangesetStatus.create!(:changeset => changeset, :author_id => 1, :context => 'ci', :state => 'failure')
+    authenticate_with_api_key User.find(2)
+
+    compatible_request :get, :show_combined, :project_id => 'onlinestore', :rev => '1', :format => 'json'
+
+    assert_response :success
+    assert_equal 'failure', ActiveSupport::JSON.decode(response.body)['state']
+  end
+
   def test_show_combined_changeset_statuses_with_xhr_should_use_session
     changeset = Changeset.create!(:repository => Repository.find(11), :revision => '1', :committed_on => Time.now, :comments => 'Private')
     ChangesetStatus.create!(:changeset => changeset, :author_id => 1, :context => 'ci', :state => 'success')

@@ -1,5 +1,5 @@
 class ChangesetStatusesController < ApplicationController
-  accept_api_auth :create, :show
+  accept_api_auth :create, :show, :show_combined
 
   before_action :require_request_with_format
   before_action :find_project
