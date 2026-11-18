@@ -1,0 +1,91 @@
+---
+# Changeset 100 (ecookbook, revision 1): combined state is "error"
+changeset_statuses_001:
+  id: 1
+  changeset_id: 100
+  context: continuous-integration/jenkins
+  state: pending
+  target_url: https://ci.example.com/builds/1
+  description: The build is pending
+  author_id: 1
+  created_on: 2024-01-01 10:00:00
+  updated_on: 2024-01-01 10:00:00
+changeset_statuses_002:
+  id: 2
+  changeset_id: 100
+  context: continuous-integration/jenkins
+  state: failure
+  target_url: https://ci.example.com/builds/2
+  description: The build failed
+  author_id: 1
+  created_on: 2024-01-01 11:00:00
+  updated_on: 2024-01-01 11:00:00
+changeset_statuses_003:
+  id: 3
+  changeset_id: 100
+  context: continuous-integration/jenkins
+  state: success
+  target_url: https://ci.example.com/builds/3
+  description: The build succeeded
+  author_id: 1
+  created_on: 2024-01-01 12:00:00
+  updated_on: 2024-01-01 12:00:00
+changeset_statuses_004:
+  id: 4
+  changeset_id: 100
+  context: code-quality
+  state: error
+  author_id: 2
+  created_on: 2024-01-01 09:00:00
+  updated_on: 2024-01-01 09:00:00
+changeset_statuses_005:
+  id: 5
+  changeset_id: 100
+  context: docs
+  state: failure
+  author_id: 2
+  created_on: 2024-01-01 08:00:00
+  updated_on: 2024-01-01 08:00:00
+# Changeset 101 (ecookbook, revision 2): combined state is "failure"
+changeset_statuses_006:
+  id: 6
+  changeset_id: 101
+  context: continuous-integration/jenkins
+  state: failure
+  author_id: 1
+  created_on: 2024-01-02 10:00:00
+  updated_on: 2024-01-02 10:00:00
+changeset_statuses_007:
+  id: 7
+  changeset_id: 101
+  context: docs
+  state: success
+  author_id: 1
+  created_on: 2024-01-02 11:00:00
+  updated_on: 2024-01-02 11:00:00
+# Changeset 102 (ecookbook, revision 3): combined state is "pending"
+changeset_statuses_008:
+  id: 8
+  changeset_id: 102
+  context: continuous-integration/jenkins
+  state: pending
+  author_id: 1
+  created_on: 2024-01-03 10:00:00
+  updated_on: 2024-01-03 10:00:00
+changeset_statuses_009:
+  id: 9
+  changeset_id: 102
+  context: docs
+  state: success
+  author_id: 1
+  created_on: 2024-01-03 11:00:00
+  updated_on: 2024-01-03 11:00:00
+# Changeset 103 (ecookbook, revision 4): combined state is "success"
+changeset_statuses_010:
+  id: 10
+  changeset_id: 103
+  context: continuous-integration/jenkins
+  state: success
+  author_id: 1
+  created_on: 2024-01-04 10:00:00
+  updated_on: 2024-01-04 10:00:00
